@@ -19,4 +19,15 @@ public class CalcMax {
         System.out.println("You have entered "+ num);
         return num;
     }
+    public static int findMax(int num1, int num2, int num3){
+
+    int max = num1;
+    if(num3>max){
+        max = num3;
+    }
+    if (num2>max){
+        max = num2;
+    }
+    return max;
+    }
 }

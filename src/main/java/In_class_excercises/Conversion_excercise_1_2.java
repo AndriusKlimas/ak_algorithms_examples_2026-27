@@ -16,7 +16,7 @@ public class Conversion_excercise_1_2 {
         int sum = 0;
 
         min = Math.min(num1,num2);
-        man = Math.max(num1,num2);
+        man = Math.max(num1,num2); // CalcMax.getMax
         sum = min;
 
         while(min!=man){

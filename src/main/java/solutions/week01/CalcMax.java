@@ -28,4 +28,21 @@ public class CalcMax {
 
         return value;
     }
+
+    public static int findMax(int num1, int num2, int num3){
+        int max = num1;
+
+        if(num2 > max){
+            max = num2;
+        }
+
+        if(num3 > max){
+            max = num3;
+        }
+
+        // Alternative approach:
+        // return Math.max(num1, Math.max(num2, num3));
+
+        return max;
+    }
 }

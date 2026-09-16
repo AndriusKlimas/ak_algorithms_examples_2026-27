@@ -62,6 +62,13 @@ public class CalcMax {
         return value;
     }
 
+    /**
+     * Identify the maximum value of 3 supplied parameters.
+     * @param num1 The first number to be checked
+     * @param num2 The second number to be checked
+     * @param num3 The third number to be checked
+     * @return The highest value supplied as a parameter
+     */
     public static int findMax(int num1, int num2, int num3){
         int max = num1;
 

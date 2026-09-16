@@ -45,4 +45,16 @@ public class CalcMax {
 
         return max;
     }
+
+    static void main() {
+        Scanner input = new Scanner(System.in);
+
+        int num1 = getValidInteger("Please enter the first number: ");
+        int num2 = getValidInteger("Please enter the second number: ");
+        int num3 = getValidInteger("Please enter the final number: ");
+
+        int max = findMax(num1, num2, num3);
+
+        System.out.println("The highest number entered was: " + max);
+    }
 }

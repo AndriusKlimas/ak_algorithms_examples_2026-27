@@ -19,7 +19,7 @@ public class ArrayUtils {
      */
     public static void displayArray(String [] nums){
         for (int i = 0; i < nums.length; i++) {
-            System.out.println(i + ": " + nums[i]);
+            System.out.println(i + ": \"" + nums[i]+"\"");
         }
     }
 }

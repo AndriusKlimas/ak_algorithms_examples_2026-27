@@ -25,6 +25,30 @@ public class CalcMax {
         return max;
     }
 
+    /*
+    PSEUDOCODE for findMax:
+        input   : nums (array of integers)
+        output  : max (the largest integer in the array)
+
+        set max to value in nums[0]
+        for each value (num) in nums array:
+            if current value (num) is greater than max:
+                set max to current value
+
+        return max
+     */
+    public static int findMax(int [] nums) {
+        int max = nums[0];
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] > max){
+                max = nums[i];
+            }
+        }
+
+        return max;
+    }
+
     static void main() {
         int num1 = InputUtilities.getValidInteger("Please enter the first number: ", 15, 45);
         int num2 = InputUtilities.getValidInteger("Please enter the second number: ", 15, 45);

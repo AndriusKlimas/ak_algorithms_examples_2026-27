@@ -1,4 +1,4 @@
-package solutions.week02;
+package solutions.week02.utils;
 
 public class ArrayUtils {
     /**

@@ -4,6 +4,6 @@ public class SampleArrayWork {
     static void main(String[] args){
         int [] nums = new int[10];
 
-        String holiday = "Tahiti";
+        System.out.println("Nums array "+ nums.length);
     }
 }

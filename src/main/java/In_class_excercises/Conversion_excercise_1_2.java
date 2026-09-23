@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class Conversion_excercise_1_2 {
     static void main(){
-        System.out.println("Please enter the first number");
-        Scanner input = new Scanner(System.in);
-        int num1 = input.nextInt();
+
+        int num1 = CalcMax.getValidInteger("Please enter first number");
 
         int num2 = CalcMax.getValidInteger("Please enter second number");
 

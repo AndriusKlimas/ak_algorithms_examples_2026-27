@@ -4,9 +4,23 @@ public class SampleArrayWork {
     static void main(String[] args) {
         int [] nums = new int[10];
 
+        // Fill with numbers:
+        nums[0] = 0;
+        nums[1] = 1;
+        nums[2] = 2;
+        nums[3] = 2;
+        nums[4] = 2;
+        nums[5] = 2;
+        nums[6] = 2;
+        nums[7] = 2;
+        nums[8] = 2;
+        nums[9] = 2;
+
+
         System.out.println("Nums array size: " + nums.length);
 
         System.out.println("Display all values in the nums array:");
+        // Equivalent to : for i in range(len(nums)):
         for (int i = 0; i < nums.length; i++) {
             System.out.println(i + ") " + nums[i]);
         }

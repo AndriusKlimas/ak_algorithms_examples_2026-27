@@ -11,5 +11,15 @@ public class TestDisplayArrays {
         }
 
         ArrayUtils.displayArray(nums);
+
+        System.out.println("------------------");
+
+        String [] text = new String[10];
+
+        for (int i = 0; i < text.length; i++) {
+            text[i] = ""+i;
+        }
+
+        ArrayUtils.displayArray(text);
     }
 }

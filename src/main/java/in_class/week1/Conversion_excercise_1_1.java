@@ -1,4 +1,4 @@
-package In_class_excercises;
+package in_class.week1;
 
 import java.util.Scanner;
 

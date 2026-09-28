@@ -1,6 +1,4 @@
-package In_class_excercises;
-
-import java.util.Scanner;
+package in_class.week1;
 
 public class Conversion_excercise_1_2 {
     static void main(){

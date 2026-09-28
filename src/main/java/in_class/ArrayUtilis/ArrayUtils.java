@@ -1,4 +1,4 @@
-package in_class.week2;
+package in_class.ArrayUtilis;
 
 public class ArrayUtils {
 

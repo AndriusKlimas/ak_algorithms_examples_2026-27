@@ -8,8 +8,10 @@ public class arraySpoof {
         String [] arrayString = {"Dippsy","Po","Laalaa","TinkyWinky"};
         int[] arrayAvr = {10,10,10,10,10};
 
-        ArrayUtils.displayArrayNums(arraysInt);
-        ArrayUtils.displayArrayString(arrayString);
-        ArrayUtils.averageArrayInt(arrayAvr);
+//        ArrayUtils.displayArrayNums(arraysInt);
+//        ArrayUtils.displayArrayString(arrayString);
+//        ArrayUtils.averageArrayInt(arrayAvr);
+        ArrayUtils.findMaxInt(arraysInt);
+
     }
 }

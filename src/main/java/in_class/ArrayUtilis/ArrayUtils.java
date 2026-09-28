@@ -44,4 +44,23 @@ public class ArrayUtils {
             System.out.println("Average is "+ average);
             }
     }
+
+    /* Finds hte biggst number in array
+
+    Parses int[] array - an array of numbers to find max
+     */
+    public static void findMaxInt(int[] array){
+        int current = array[0];
+    //take first value, then compare to others, if it chnages then continue until the end
+        for(int i=0;i<array.length;i++){
+            if(array[i]>current){
+                current = array[i];
+                System.out.println("New biggest "+ current);
+            }
+        }
+        System.out.println("Biggest number is "+current);
+    }
+
+
+
 }

@@ -61,6 +61,22 @@ public class ArrayUtils {
         System.out.println("Biggest number is "+current);
     }
 
+        /* finds the work with the last letter in alphabet, swap > to < for vise versa
 
+
+        Parses String[] array - holds the array of strings
+         */
+    public static void findMaxString(String[] array){
+        String current = array[0];
+        for(int i=0;i<array.length;i++){
+            String newerOne = array[i];
+            System.out.println(newerOne);
+
+            if (newerOne.compareTo(current) > 0){
+                current = newerOne;
+            }
+        }
+        System.out.println(current);
+    }
 
 }

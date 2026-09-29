@@ -112,4 +112,20 @@ public class ArrayUtils {
         System.out.println(current);
     }
 
+        /* To find how many times a specified int occures
+
+        Parses:
+            array [] - holds array of int's
+            toFind int = an int
+         */
+    public static int findSpecificAmountInt(int[] array, int toFind){
+        int count = 0;
+        for(int i=0;i<array.length;i++){
+            if(array[i] == toFind){
+                count ++;
+            }
+        }
+        return count;
+    }
+
 }

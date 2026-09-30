@@ -2,6 +2,7 @@ Name:           count()
 Description:    Calculate count of a specified element in a supplied array
 Input:          Array of data to serach (data), element to be counted (target)
 Output:         Number of occurrences of target in data array
+Complexity:     O(n) - linear
 
 // SET UP:
 Set count to 0
@@ -14,4 +15,29 @@ for each slot (i) in data:
 // OUTPUT:
 return count
 
+Name:           maxFrequency()
+Description:    Find element with highest frequency in supplied array (data)
+Input:          Array of data to find most frequent value
+Output:         Most frequent value
+Complexity:     O(n^2) - quadratic
+
+// SET UP:
+Set maxCount to 1
+Set mostFreq to first element in data (data[0])
+
+// LOGIC:
+for each element (target) in data:
+    Set count to 0
+
+    // LOGIC:
+    for each slot (j) in data:
+        if data[j] == target:
+            increase count by 1
+
+    if count > maxCount:
+        set maxCount to count
+        set mostFreq to target
+
+OUTPUT:
+return mostFreq
 

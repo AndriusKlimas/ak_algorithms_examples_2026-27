@@ -29,4 +29,31 @@ public class ArrayUtils {
         }
         return -1;
     }
+
+    public static int count(int [] data, int target){
+        int count = 0;
+        for (int i = 0; i < data.length; i++) {
+            if(data[i] == target){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static int maxFrequency(int [] data){
+        int maxCount = 1;
+        int mostFreq = data[0];
+
+        for (int value : data) {
+            int count = count(data, value);
+
+            if(count > maxCount){
+                maxCount = count;
+                mostFreq = value;
+            }
+        }
+
+        return mostFreq;
+    }
 }

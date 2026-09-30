@@ -1,0 +1,17 @@
+Name:           count()
+Description:    Calculate count of a specified element in a supplied array
+Input:          Array of data to serach (data), element to be counted (target)
+Output:         Number of occurrences of target in data array
+
+// SET UP:
+Set count to 0
+
+// LOGIC:
+for each slot (i) in data:
+    if data[i] == target:
+        increase count by 1
+
+// OUTPUT:
+return count
+
+

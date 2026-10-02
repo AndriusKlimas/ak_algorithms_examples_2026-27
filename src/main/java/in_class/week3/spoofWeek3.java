@@ -11,8 +11,11 @@ public class spoofWeek3 {
 //        System.out.println(info);
 
         int [] arrayOrderedInt={1,2,2,2,3,3,4,5,5};
-        int info2 = arrayUtils_week3.mostFrequentInt(arrayOrderedInt);
-        System.out.println(info2);
+//        int info2 = arrayUtils_week3.mostFrequentInt(arrayOrderedInt);
+//        System.out.println(info2);
+
+        int info3 = arrayUtils_week3.mostFreqIntBetter(arrayOrderedInt);
+        System.out.println(info3);
     }
 
 }

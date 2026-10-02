@@ -35,4 +35,27 @@ public class arrayUtils_week3 {
 
         return mostFrequent;
     }
+
+    public static int mostFreqIntBetter(int[] array){
+        //for loop throug
+        //check the number
+        //if the number
+        int count =0;
+        int maxCount = 0;
+        int current = array[0];
+        for(int i=0;i<array.length;i++){
+            if (array[i] == current){
+                count++;
+            }
+            else{
+                current = array[i];
+                count = 1;
+            }
+            System.out.println("Current number is = "+current + " found = " +count);
+            if (count > maxCount) {
+                maxCount = count;
+            }
+        }
+        return maxCount;
+    }
 }

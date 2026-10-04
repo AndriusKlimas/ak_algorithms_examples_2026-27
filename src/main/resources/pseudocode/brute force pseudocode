@@ -41,3 +41,32 @@ for each element (target) in data:
 OUTPUT:
 return mostFreq
 
+
+Name:           optimisedMaxFrequency()
+Description:    Find element with highest frequency in supplied array (data)
+Input:          Array of data to find most frequent value
+Output:         Most frequent value
+Complexity:
+
+SETUP:
+Set mostFreq to data[0]
+Set maxCount to 0
+
+Set count to 0
+Set runStart to 0
+Set runEnd to 0
+
+// LOGIC:
+for each slot (i) in data, ending at data length - 1:
+    Increase runEnd by 1
+    If data[runStart] is not equal to data[runEnd]:
+        count = runEnd - runStart
+
+        if count > maxCount:
+            Set maxCount = count
+            Set mostFreq = data[runStart]
+
+        Set runStart = runEnd
+
+// OUTPUT:
+Return mostFreq

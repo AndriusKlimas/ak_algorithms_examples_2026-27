@@ -68,5 +68,10 @@ for each slot (i) in data, ending at data length - 1:
 
         Set runStart = runEnd
 
+set count = data length - runStart
+if count > maxCount:
+    set maxCount to count
+    set mostFreq to data[runStart]
+
 // OUTPUT:
 Return mostFreq

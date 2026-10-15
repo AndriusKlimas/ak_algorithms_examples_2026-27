@@ -1,5 +1,10 @@
 package Worksheet.TwoPointerExercises;
 
+import org.w3c.dom.css.Counter;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class SlindingWindow {
 
     //example Only
@@ -41,7 +46,7 @@ public class SlindingWindow {
         return new int[]{-1, -1};
     }
 
-    //loops though all of the possibilites and returns what was specified, e.g. least amount of numbers
+    //loops though all of the possibilites and returns what was specified, e.g. the least amount of numbers
     public static int DynamicSlidingWindowSubArraySpecific(int[] data, int target) {
         int start = 0;
         int[] position = new int[]{0,0};
@@ -63,4 +68,30 @@ public class SlindingWindow {
         }
         return longest;
     }
+//    public static String DynamicSlidingWindowStringSpecific(String data){
+//        int start = 0;
+//        int longestStart = 0;
+//        int longestLength = 0;
+//        Map<Character, Integer> lastSeen = new HashMap<>();
+//
+//        for (int end = 0; end < data.length(); end++) {
+//            char currentChar = data.charAt(end);
+//
+//            if (lastSeen.containsKey(currentChar)
+//                    && lastSeen.get(currentChar) >= start) {
+//                start = lastSeen.get(currentChar) + 1;
+//            }
+//
+//            lastSeen.put(currentChar, end);
+//
+//            int currentLength = end - start + 1;
+//            if (currentLength > longestLength) {
+//                longestStart = start;
+//                longestLength = currentLength;
+//            }
+//        }
+//
+//        return data.substring(longestStart, longestStart + longestLength);
+//    }
+
 }

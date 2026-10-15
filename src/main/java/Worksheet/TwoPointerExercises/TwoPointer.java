@@ -32,10 +32,10 @@ public class TwoPointer {
                 right--;
             }
             else {
-                return data;
+                return "It is not a palindrome";
             }
         }
-        return "It is not a palindrome";
+        return data;
     }
 
     public static int waterAmount(int[] data){

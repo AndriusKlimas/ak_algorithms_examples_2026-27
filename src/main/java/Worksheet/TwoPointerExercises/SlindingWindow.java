@@ -42,5 +42,25 @@ public class SlindingWindow {
     }
 
     //loops though all of the possibilites and returns what was specified, e.g. least amount of numbers
-    public static int[] DynamicSlidingWindowSubArraySpecific(int[] data, int target) {
+    public static int DynamicSlidingWindowSubArraySpecific(int[] data, int target) {
+        int start = 0;
+        int[] position = new int[]{0,0};
+        int longest = -1;
+        int windowSum=0;
+        for (int end = 0; end < data.length; end++) {
+            windowSum += data[end];
+            while (windowSum > target) {
+                windowSum -= data[start];
+                start++;
+            }
+            if(windowSum==target) {
+                // Update the longest subarray if the current one is longer
+                if (end - start + 1 > longest) {
+                    longest = end - start + 1;
+                    position = new int[]{start,end};
+                }
+            }
+        }
+        return longest;
+    }
 }

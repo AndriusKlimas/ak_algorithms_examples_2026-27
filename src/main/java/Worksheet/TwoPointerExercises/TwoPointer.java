@@ -38,4 +38,29 @@ public class TwoPointer {
         return "It is not a palindrome";
     }
 
+    public static int waterAmount(int[] data){
+        int left = 0;
+        int right = data.length -1;
+        int base = data.length;
+        int maxWater = 0;
+        int water = 0;
+
+        while(left<right){
+
+            if(data[left] < data[right]){
+                water = data[right] * base;
+                left++;
+                base--;
+            } else {
+                water = data[left] * base;
+                right--;
+                base--;
+            }
+            if(water > maxWater) {
+                maxWater = water;
+            }
+        }
+        return maxWater;
+    }
+
 }

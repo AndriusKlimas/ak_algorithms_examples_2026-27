@@ -68,6 +68,47 @@ public class SlindingWindow {
         }
         return longest;
     }
+
+
+    public static String longestSection(String text){
+        if(text==null){
+            throw new IllegalArgumentException("Cannot calclulate longest subsection without repeating characters" + " hstring is null");
+        }
+
+        if(text.isEmpty()) {
+            return "";
+        }
+
+        int start = 0;
+        int end = 1;
+
+        int longestCurrentLength = 0;
+        int startPos = 0;
+        int endPos = 0;
+
+        while(end<text.length()){
+            //comapres all letters with all other letters in the window
+            for (int i = start;i  <end ; i++) {
+                //if one is found stop and do the below
+                if(text.charAt(end) == text.charAt(i)){
+                    int currentLength = end - start;
+                    if(currentLength>longestCurrentLength){
+                        startPos = start;
+                        endPos = end;
+                        longestCurrentLength = currentLength;
+                    }
+                    start = i+1;
+                    break;
+                }
+            }
+            end++;
+        }
+        if(start ==0){
+            return text;
+        }
+        return text.substring(startPos,endPos);
+    }
+    //moving window for strings
 //    public static String DynamicSlidingWindowStringSpecific(String data){
 //        int start = 0;
 //        int longestStart = 0;

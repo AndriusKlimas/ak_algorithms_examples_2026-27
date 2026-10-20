@@ -114,4 +114,22 @@ public class bruteVsTwo {
         }
         return true;
     }
+
+    //Q3
+    public static int[] smallestContinueTargetBrute(int[] data, int target){
+        //for loop to go through array
+        //stop when found the target
+        //get the length / amount of hops done
+        //repeat until all is done
+        // get the shortest one and return the start and end
+    }
+
+    public static int[] smallestContinueTargetTwo(int[] data, int target){
+        //use dynamic sliding window
+        // go through the array
+        //store when a combo is found
+        //keep going until you reach the end
+        // return the coordinated
+    }
+
 }

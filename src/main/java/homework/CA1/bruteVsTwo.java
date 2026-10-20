@@ -55,15 +55,19 @@ public class bruteVsTwo {
         // Compare the sorted arrays using two pointer
         int i = 0;
         int j = 0;
+
         while(i<array1Copy.length && j<array2Copy.length){
             if(array1Copy[i] == array2Copy[j]){
                 i++;
                 j++;
             }
+
             else{
                 return false;
             }
+
         }
+
         return true;
     }
 
@@ -77,6 +81,20 @@ public class bruteVsTwo {
         //another loop to go to the last piece of string and get it
         //check if equal, if yes then continue
         // if not equal return false
+
+        for (int i = 0; i < data.length(); i++) {
+            String info1 = data.charAt(i)+"";
+
+            for (int j = 0; j < data.length(); j++) {
+                String info2 = data.charAt(data.length() - 1 - i)+"";
+
+                if(!info1.equals(info2)){
+                    return false;
+                }
+            }
+        }
+
+        return true;
 
     }
 

@@ -160,6 +160,10 @@ public class bruteVsTwo {
 
             i++;
 
+
+        }
+        if (storedLocation[0] == -1) {
+            return new int[]{-1, -1};
         }
         return storedLocation;
     }
@@ -170,6 +174,7 @@ public class bruteVsTwo {
         //store when a combo is found
         //keep going until you reach the end
         // return the coordinated
+
     }
 
 }

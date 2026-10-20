@@ -1,5 +1,7 @@
 package homework.CA1;
 
+import java.util.Arrays;
+
 public class bruteVsTwo {
 
 
@@ -42,6 +44,27 @@ public class bruteVsTwo {
         //note sure if this can be done, but go through each one and compare, one pointer in one array, one pointer in the other
         // e.g. i=0, j=0, if i==j continue, if not then return false
 
+
+
+        int[] array1Copy = Arrays.copyOf(array1, array1.length);
+        int[] array2Copy = Arrays.copyOf(array2, array2.length);
+
+        int[] array1Sorted = Arrays.sort(array1Copy);
+        int[] array2Sorted = Arrays.sort(array2Copy);
+
+        // Compare the sorted arrays using two pointer
+        int i = 0;
+        int j = 0;
+        while(i<array1Sorted.length && j<array2Sorted.length){
+            if(array1Sorted[i] == array2Sorted[j]){
+                i++;
+                j++;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
     }
 
 

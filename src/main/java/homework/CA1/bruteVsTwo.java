@@ -117,11 +117,51 @@ public class bruteVsTwo {
 
     //Q3
     public static int[] smallestContinueTargetBrute(int[] data, int target){
-        //for loop to go through array
-        //stop when found the target
-        //get the length / amount of hops done
-        //repeat until all is done
-        // get the shortest one and return the start and end
+        //for loot to get the start position
+        //second for loop to go through the array
+        //if it finds or exceeds the target stop the second loop
+        //choose a new start position e.g. i+1
+        // store the current shortest one and the positions
+        int start = 0;
+        int end = 0;
+        int sum = 0;
+        int count =0;
+        int smallCount = 0;
+        int[] location={0, 0};
+        int[] storedLocation={0,0};
+        for (int i = 0; i < data.length; i++) {
+            sum = 0;
+            start = i;
+            count =0;
+
+            for (int j = i; j < data.length; j++) {
+                sum += data[j];
+
+                count++;
+
+                if(sum<=target){
+                    end = j;
+                    location[0] = start;
+                    location[1] = end;
+                    break;
+                }
+                if(j == data.length - 1){
+                    location[0] = -1;
+                    location[1] = -1;
+                }
+
+            }
+            //data may be over write with the second if statement, added extra validation
+            if(smallCount>count && location[0] > 0){
+                smallCount = count;
+                storedLocation = location;
+
+            }
+
+            i++;
+
+        }
+        return storedLocation;
     }
 
     public static int[] smallestContinueTargetTwo(int[] data, int target){

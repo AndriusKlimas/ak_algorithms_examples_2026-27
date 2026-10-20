@@ -49,14 +49,14 @@ public class bruteVsTwo {
         int[] array1Copy = Arrays.copyOf(array1, array1.length);
         int[] array2Copy = Arrays.copyOf(array2, array2.length);
 
-        int[] array1Sorted = Arrays.sort(array1Copy);
-        int[] array2Sorted = Arrays.sort(array2Copy);
+        Arrays.sort(array1Copy);
+        Arrays.sort(array2Copy);
 
         // Compare the sorted arrays using two pointer
         int i = 0;
         int j = 0;
-        while(i<array1Sorted.length && j<array2Sorted.length){
-            if(array1Sorted[i] == array2Sorted[j]){
+        while(i<array1Copy.length && j<array2Copy.length){
+            if(array1Copy[i] == array2Copy[j]){
                 i++;
                 j++;
             }

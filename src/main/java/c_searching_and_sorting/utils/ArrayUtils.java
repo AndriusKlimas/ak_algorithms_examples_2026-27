@@ -49,10 +49,10 @@ public class ArrayUtils {
         while(start <= end){
             int mid = start + (end - start) / 2;
 
-            int comparison = target.compareTo(data[mid]);
+            int comparison = data[mid].compareTo(target);
             if(comparison == 0){
                 return mid;
-            }else if(comparison < 0){
+            }else if(comparison > 0){
                 end = mid-1;
             }else{
                 start = mid+1;

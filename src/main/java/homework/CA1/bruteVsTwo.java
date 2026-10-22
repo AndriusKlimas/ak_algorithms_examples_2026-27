@@ -228,6 +228,46 @@ public class bruteVsTwo {
         return new String(flippedWord);
 
     }
+
+    public static String ReverseVowelsTwo(String word) {
+        //two pointer approach
+        // if the left pointer reaches a vowel stop until the right on does
+        //when they both on vowels swap them with eachother
+        // continue until the pointers cross eachother
+        char[] wordChar = new char[word.length()];
+        String newWord = "";
+        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+
+        for (int i = 0; i < word.length(); i++) {
+            wordChar[i] = word.charAt(i);
+        }
+
+        int left = 0;
+        int right = wordChar.length - 1;
+
+        while (left < right) {
+            //need to check if left is on a vowel
+            if(word.charAt(left) == vowels[0] || word.charAt(left) == vowels[1] || word.charAt(left) == vowels[2] || word.charAt(left) == vowels[3] || word.charAt(left) == vowels[4] || word.charAt(left) == vowels[5] || word.charAt(left) == vowels[6] || word.charAt(left) == vowels[7] || word.charAt(left) == vowels[8] || word.charAt(left) == vowels[9]) {
+                //left is on a vowel, so we stop here
+            } else {
+                left++;
+            }
+            //need to check if right is on a vowel
+            if(word.charAt(right) == vowels[0] || word.charAt(right) == vowels[1] || word.charAt(right) == vowels[2] || word.charAt(right) == vowels[3] || word.charAt(right) == vowels[4] || word.charAt(right) == vowels[5] || word.charAt(right) == vowels[6] || word.charAt(right) == vowels[7] || word.charAt(right) == vowels[8] || word.charAt(right) == vowels[9]) {
+                //right is on a vowel, so we stop here
+            } else {
+                right--;
+            }
+
+            //now we swap left and right vowels
+            char temp = wordChar[left];
+            wordChar[left] = wordChar[right];
+            wordChar[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(wordChar);
+    }
 }
 
 

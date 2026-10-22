@@ -168,13 +168,35 @@ public class bruteVsTwo {
         return storedLocation;
     }
 
-    public static int[] smallestContinueTargetTwo(int[] data, int target){
-        //use dynamic sliding window
-        // go through the array
-        //store when a combo is found
-        //keep going until you reach the end
-        // return the coordinated
-
+    public static int[] DynamicSlidingWindowSubArraySpecific(int[] data, int target) {
+        int start = 0;
+        int[] position = new int[]{-1,-1};
+        int sortest = 99999;
+        int windowSum=0;
+        for (int end = 0; end < data.length; end++) {
+            windowSum += data[end];
+            while (windowSum > target) {
+                windowSum -= data[start];
+                start++;
+            }
+            if(windowSum>=target) {
+                // Update the shortest subarray if the current one is shorter
+                if (end - start + 1 < sortest) {
+                    sortest = end - start + 1;
+                    position = new int[]{start,end};
+                }
+            }
+        }
+        return position;
     }
+
+//    public static int[] smallestContinueTargetTwo(int[] data, int target){
+//        //use dynamic sliding window
+//        // go through the array
+//        //store when a combo is found
+//        //keep going until you reach the end
+//        // return the coordinated
+//
+//    }
 
 }

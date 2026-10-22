@@ -200,15 +200,12 @@ public class bruteVsTwo {
             windowSum += data[end];
 
             while (windowSum >= target) {
+                    if (end - start + 1 < sortest) {
+                        sortest = end - start + 1;
+                        position = new int[]{start, end};
+                    }
                 windowSum -= data[start];
                 start++;
-            }
-            if (windowSum >= target) {
-
-                if (end - start + 1 < sortest) {
-                    sortest = end - start + 1;
-                    position = new int[]{start, end};
-                }
             }
         }
         return position;

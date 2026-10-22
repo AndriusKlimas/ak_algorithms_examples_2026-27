@@ -6,11 +6,15 @@ public class bruteVsTwo {
 
 
     //Q1
+    /* brute force approach
+     * This method checks if two arrays have the same content, regardless of order.
+     * It does this by counting the occurrences of each element in both arrays.
+     * The big O notation for this is n, Technically it is n^3 as it has 3 loops, 1 outer and 2 nested loops.
+     * @param array1 the first array to compare
+     * @param array2 the second array to compare
+     * @return true if the arrays have the same content, false otherwise
+     */
     public static boolean sameArrayContentBrute(int[] array1, int[] array2) {
-        //loop through array1, get an int
-        //loop through first array1, count how many times the array provided by i appears
-        //loop through second array, count how many times it appears
-        //if same then move onto next int in the array1 until it is done
         for (int i = 0; i < array1.length; i++) {
 
             int count1 = 0;
@@ -37,12 +41,15 @@ public class bruteVsTwo {
 
     }
 
+    /* Two Pointer approach
+    *   This method checks if two arrays have the same content, regardless of order.
+    *   It does this by sorting both arrays and then comparing them using two pointers.
+    *   The big O notation for this is n log n, due to the sorting step.
+    * @param array1 the first array to compare
+    * @param array2 the second array to compare
+    * @return true if the arrays have the same content, false otherwise
+     */
     public static boolean sameArrayContentTwo(int[] array1, int[] array2) {
-        //create a copy of the 2 arrays, so it does not alter the original
-        //sort both of them
-        //go through each one using two pointer
-        //note sure if this can be done, but go through each one and compare, one pointer in one array, one pointer in the other
-        // e.g. i=0, j=0, if i==j continue, if not then return false
 
 
         int[] array1Copy = Arrays.copyOf(array1, array1.length);
@@ -70,7 +77,13 @@ public class bruteVsTwo {
 
 
     //Q2
-
+    /*Brute force approach
+     * this method checks if a string is a palindrome.
+     * it does this by comparing each character with its corresponding character from the end of the string.
+     * the big O notation for this is n, where n is the length of the string.
+     * @param data the string to check
+     * @return true if the string is a palindrome, false otherwise
+     */
     public static boolean palindromeBrute(String data) {
         //use .charAt()
         //loop through the piece of sting, get the first letter
@@ -94,6 +107,15 @@ public class bruteVsTwo {
 
     }
 
+    /*
+     * Two Pointer approach
+     * This method checks if a string is a palindrome.
+     * It does this by using two pointers, one at the beginning and one at the end of the string,
+     * and comparing the characters at these positions.
+     * The big O notation for this is n, where n is the length of the string.
+     * @param data the string to check
+     * @return true if the string is a palindrome, false otherwise
+     */
     public static boolean palindromeTwoPoint(String data) {
         //.charAt()
         int left = 0;
@@ -111,12 +133,14 @@ public class bruteVsTwo {
     }
 
     //Q3
+    /* Brute force approach
+     * This method finds the smallest contiguous subarray whose sum is greater than or equal to the target.
+     * The big O notation for this is n^2, where n is the length of the array.
+     * @param data the array of integers
+     * @param target the target sum
+     * @return an array containing the start and end indices of the smallest subarray, or [-1, -1] if no such subarray exists
+     */
     public static int[] smallestContinueTargetBrute(int[] data, int target) {
-        //for loot to get the start position
-        //second for loop to go through the array
-        //if it finds or exceeds the target stop the second loop
-        //choose a new start position e.g. i+1
-        // store the current shortest one and the positions
         int start = 0;
         int end = 0;
         int sum = 0;
@@ -163,6 +187,13 @@ public class bruteVsTwo {
         return storedLocation;
     }
 
+    /* Sliding Window
+     * This method finds the smallest contiguous subarray whose sum is greater than or equal to the target.
+     * The big O notation for this is n, where n is the length of the array.
+     * @param data the array of integers
+     * @param target the target sum
+     * @return an array containing the start and end indices of the smallest subarray, or [-1, -1] if no such subarray exists
+     */
     public static int[] smallestContinueTargetTwo(int[] data, int target) {
         int start = 0;
         int[] position = new int[]{-1, -1};
@@ -189,7 +220,12 @@ public class bruteVsTwo {
 
 
     //Q4
-
+    /* Brute force approach
+     * This method finds all the vowels in the input string and reverses their order.
+     * The big O notation for this is n, where n is the length of the string. It is n^4 as it has 4 loops but none of them are nested
+     * @param word the input string
+     * @return the string with the vowels reversed
+     */
     public static String ReverseVowelsBrute(String word) {
         char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
@@ -229,6 +265,12 @@ public class bruteVsTwo {
 
     }
 
+    /*Two Pointer
+     * This method finds all the vowels in the input string and reverses their order.
+     * The big O notation for this is n, where n is the length of the string.
+     * @param word the input string
+     * @return the string with the vowels reversed
+     */
     public static String ReverseVowelsTwo(String word) {
         //two pointer approach
         // if the left pointer reaches a vowel stop until the right on does

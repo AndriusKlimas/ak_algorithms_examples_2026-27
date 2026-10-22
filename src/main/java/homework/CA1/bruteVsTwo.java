@@ -85,11 +85,7 @@ public class bruteVsTwo {
      * @return true if the string is a palindrome, false otherwise
      */
     public static boolean palindromeBrute(String data) {
-        //use .charAt()
-        //loop through the piece of sting, get the first letter
-        //another loop to go to the last piece of string and get it
-        //check if equal, if yes then continue
-        // if not equal return false
+
 
         for (int i = 0; i < data.length(); i++) {
             String info1 = data.charAt(i) + "";
@@ -272,10 +268,7 @@ public class bruteVsTwo {
      * @return the string with the vowels reversed
      */
     public static String ReverseVowelsTwo(String word) {
-        //two pointer approach
-        // if the left pointer reaches a vowel stop until the right on does
-        //when they both on vowels swap them with eachother
-        // continue until the pointers cross eachother
+
         char[] wordChar = new char[word.length()];
         String newWord = "";
         char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};

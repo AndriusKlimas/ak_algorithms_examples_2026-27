@@ -199,7 +199,7 @@ public class bruteVsTwo {
         for (int end = 0; end < data.length; end++) {
             windowSum += data[end];
 
-            while (windowSum > target) {
+            while (windowSum >= target) {
                 windowSum -= data[start];
                 start++;
             }

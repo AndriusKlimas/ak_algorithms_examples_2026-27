@@ -1,4 +1,4 @@
-package b_two_pointer.utils;
+package b_two_pointer.utils;.
 
 public class ArrayUtils {
     // Note: This assumes that the data is sorted before carrying out the action

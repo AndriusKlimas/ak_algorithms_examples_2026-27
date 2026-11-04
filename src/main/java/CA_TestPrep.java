@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class CA_TestPrep {
 
-    //Brute force
+    //Brute force.
     //Calculate the most frequent academic year across all Students in an array
 
     public static int mostFrequentYear(int[] data) {

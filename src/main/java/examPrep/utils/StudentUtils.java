@@ -1,6 +1,7 @@
 package examPrep.utils;
 
 import examPrep.entities.Student;
+import in_class.week1.CalcMax;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -420,4 +421,91 @@ public class StudentUtils {
 
         return maxCount;
     }
+
+    //dynamic window
+    //easy??????????? i dont think so
+    public static int shortestCourseWindow(
+            Student[] students, String courseName){
+
+        int start = 0;
+        int matches = 0;
+        int shortest = Integer.MAX_VALUE;
+
+        for (int end = 0; end < students.length; end++) {
+
+            if (courseName.equals(students[end].getCourse())) {
+                matches++;
+            }
+
+            // Shrink from the left once the window has two matches
+            while (matches >= 2) {
+                int windowSize = end - start + 1;
+
+                if (windowSize < shortest) {
+                    shortest = windowSize;
+                }
+
+                if (courseName.equals(students[start].getCourse())) {
+                    matches--;
+                }
+
+                start++;
+            }
+        }
+
+        if (shortest == Integer.MAX_VALUE) {
+            return 0;
+        }
+
+        return shortest;
+    }
+
+    //this is something else
+    public static int longestTwoCourseWindow(Student[] students){
+        int start = 0;
+        int longest = 0;
+
+        for (int end = 0; end < students.length; end++) {
+
+            int differentCourses;
+
+            do {
+                String[] foundCourses = new String[end - start + 1];
+                int numberFound = 0;
+
+                for (int i = start; i <= end; i++) {
+                    String currentCourse = students[i].getCourse();
+                    boolean alreadyFound = false;
+
+                    for (int j = 0; j < numberFound; j++) {
+                        if (foundCourses[j].equals(currentCourse)) {
+                            alreadyFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!alreadyFound) {
+                        foundCourses[numberFound] = currentCourse;
+                        numberFound++;
+                    }
+                }
+
+                differentCourses = numberFound;
+
+                if (differentCourses > 2) {
+                    start++;
+                }
+
+            } while (differentCourses > 2);
+
+            int windowSize = end - start + 1;
+
+            if (windowSize > longest) {
+                longest = windowSize;
+            }
+        }
+
+        return longest;
+    }
+
 }

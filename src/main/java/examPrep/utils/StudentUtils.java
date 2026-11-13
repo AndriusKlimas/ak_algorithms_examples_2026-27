@@ -186,4 +186,62 @@ public class StudentUtils {
         return count;
     }
 
+
+    private static void StringValidation(String toCheck){
+        if (toCheck == null || toCheck.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Course name cannot be null or blank"
+            );
+        }
+    }
+
+    public static int countByCourseBruteForce(
+            Student[] students, String courseName){
+        StringValidation(courseName);
+        //initalise varaibles
+        int count = 0;
+
+        for (Student student : students) {
+            if (student != null &&
+                    student.getCourse().equals(courseName)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static int countByCourseTwoPointer(Student[] students, String courseName){
+        // need to add validation for checking if course name != null or white space
+
+        StringValidation(courseName);
+
+        //copy the array
+        //sort teh array
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray,Comparator.comparing(Student::getCourse));
+
+        //find the start position, so go through the entier list until you find it
+
+        int end = 0;
+
+        while (end < newArray.length &&
+                !newArray[end].getCourse().equals(courseName)) {
+            end++;
+        }
+
+        //once found run through it and start counting until it is no longer equil
+        int count = 0;
+
+        while (end < newArray.length &&
+                newArray[end].getCourse().equals(courseName)) {
+            count++;
+            end++;
+        }
+
+        //once found run through it and start counting until it is no longer equil
+
+        return count;
+    }
+
 }

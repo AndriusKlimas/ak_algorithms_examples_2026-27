@@ -244,4 +244,180 @@ public class StudentUtils {
         return count;
     }
 
+    public static Student searchByNameBruteForce(
+            Student[] students, String name){
+        Student found;
+        for (Student student : students){
+            if (student !=null && student.getName().equals(name)){
+                found = student;
+                return found;
+            }
+
+
+        }
+        return null;
+    }
+
+    public static Student searchByNameTwoPointer(
+            Student[] students, String name){
+
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray,Comparator.comparing(Student::getName));
+
+
+        int left = 0;
+        int right = newArray.length - 1;
+
+        while (left <= right) {
+            if (name.equals(newArray[left].getName())) {
+                return newArray[left];
+            }
+
+            if (name.equals(newArray[right].getName())) {
+                return newArray[right];
+            }
+
+            left++;
+            right--;
+        }
+
+        return null;
+    }
+
+    //Test prep
+    //Converging pointer
+    //easy
+    public static Student findStudent(Student[] students, String studentNumber){
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray,Comparator.comparing(Student::getStudentNum));
+
+        int left = 0;
+        int right = newArray.length-1;
+
+        while(left<=right){
+            if (studentNumber.equals(newArray[left].getStudentNum())){
+                return newArray[left];
+            }
+            if (studentNumber.equals(newArray[right].getStudentNum())){
+                return newArray[right];
+            }
+            left++;
+            right--;
+        }
+        return null;
+    }
+
+    //Inter
+    public static boolean hasYearPairWithTotal(
+            Student[] students, int target){
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray, Comparator.comparing(Student::getYear));
+        int left = 0;
+        int right = newArray.length-1;
+
+        while (left<right){
+            int sum = newArray[left].getYear() + newArray[right].getYear();
+            if (sum == target){
+                return true;
+            }else{
+                if (target<sum){
+                    left++;
+                }
+                else{
+                    right--;
+                }
+            }
+        }
+        return false;
+
+    }
+
+
+    //Continious window
+    //easy
+
+    public static int highestYearTotal(Student[] students) {
+        // calculating the sum of the first window
+        int windowSize = 3;
+        int windowSum = 0;
+
+        for (int i = 0; i < windowSize; i++) {
+            windowSum += students[i].getYear();
+        }
+
+        int maxSum = windowSum;
+
+        for (int right = windowSize; right < students.length; right++) {
+            windowSum -= students[right-windowSize].getYear();
+            windowSum += students[right].getYear();
+
+            if (windowSum> maxSum){
+                maxSum = windowSum;
+            }
+        }
+        return maxSum;
+
+
+
+        //sliding the window
+
+//        int windowSum = 0;
+//        for (int i = 0; i < k; i++) {
+//            windowSum += data[i];
+//        }
+//
+//
+//
+//        int maxSum = windowSum;
+//
+//        //sliding the window
+//        for (int right = k; right < data.length; right++) {
+//            windowSum -= data[right - k];
+//            windowSum += data[right];
+//
+//            if (windowSum > maxSum)
+//                maxSum = windowSum;
+//        }
+//        return maxSum;
+    }
+
+
+    public static int highestCourseCount(
+            Student[] students, String courseName){
+        int windowSize = 3;
+
+        if (students.length < windowSize) {
+            return 0;
+        }
+
+        int count = 0;
+
+        // Count the first window
+        for (int i = 0; i < windowSize; i++) {
+            if (courseName.equals(students[i].getCourse())) {
+                count++;
+            }
+        }
+
+        int maxCount = count;
+
+        // Move the window across the array
+        for (int right = windowSize; right < students.length; right++) {
+            int leaving = right - windowSize;
+
+            if (courseName.equals(students[leaving].getCourse())) {
+                count--;
+            }
+
+            if (courseName.equals(students[right].getCourse())) {
+                count++;
+            }
+
+            if (count > maxCount) {
+                maxCount = count;
+            }
+        }
+
+        return maxCount;
+    }
 }

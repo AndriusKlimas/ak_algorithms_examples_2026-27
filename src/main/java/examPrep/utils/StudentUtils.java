@@ -508,4 +508,143 @@ public class StudentUtils {
         return longest;
     }
 
+
+    //recap
+    //two pointer
+
+    public static int countYearsBetween(
+            Student[] students, int minimumYear, int maximumYear){
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray, Comparator.comparing(Student::getYear));
+
+        int start = 0;
+        int result = 0;
+
+
+
+        while (start< newArray.length && newArray[start].getYear() != minimumYear){
+            start++;
+        }
+
+
+        int end = start;
+
+        while(end< newArray.length && newArray[end].getYear() != maximumYear){
+            end++;
+        }
+
+        if (result<(start - end) +1){
+            result = (start - end) +1;
+        }
+
+        return result;
+
+    }
+
+    //recap
+    //converging pointer
+    public static boolean hasYearTotal(
+            Student[] students, int target){
+        Student[] newArrray = Arrays.copyOf(students,students.length);
+        Arrays.sort(newArrray, Comparator.comparing(Student::getYear));
+
+        int left = 0;
+        int right = newArrray.length -1;
+        int total = 0;
+
+        while (left<right){
+            //need to add them
+            //check the result
+            // if to high lower right
+            // if to low increase left
+
+            total = newArrray[left].getYear() + newArrray[right].getYear();
+            if (target>total){
+                left++;
+            } else if (target<total) {
+                right--;
+            } else if (total==target) {
+                return true;
+
+            }
+        }
+     return false;
+    }
+
+
+    //recap fixed window
+    public static int highestThreeYearTotal(Student[] students){
+        int windowSize = 3;
+        int windowSum = 0;
+
+        for (int i = 0; i < windowSize; i++) {
+            windowSum += students[i].getYear();
+        }
+
+        int currentMax = windowSum;
+
+        for (int i = windowSize; i < students.length; i++) {
+            int leaving = i - windowSize;
+
+            windowSum -= students[leaving].getYear();
+            windowSum += students[i].getYear();
+
+            if (windowSum>currentMax){
+                currentMax = windowSum;
+            }
+
+        }
+        return currentMax;
+    }
+
+    //recap
+    //dynamic window
+    public static int shortestThreeCourseWindow(
+            Student[] students, String courseName){
+        //set up the variables
+        //start end
+        //while end > data length
+        // keep moving
+        //keep a count of if the persons course is the same as needed
+        // once count is 3
+        //stop end
+        // while count >= 3
+        // start ++
+        //need to check if current window size is less than smallest
+        // if it is store the new size
+
+        int start = 0;
+        int count = 0;
+        int shortest = Integer.MAX_VALUE;
+
+        for (int end = 0; end < students.length; end++) {
+
+            if (courseName.equals(students[end].getCourse())) {
+                count++;
+            }
+
+            while (count >= 3) {
+                int windowSize = end - start + 1;
+
+                if (windowSize < shortest) {
+                    shortest = windowSize;
+                }
+
+                if (courseName.equals(students[start].getCourse())) {
+                    count--;
+                }
+
+                start++;
+            }
+        }
+
+        if (shortest == Integer.MAX_VALUE) {
+            return 0;
+        }
+
+        return shortest;
+    }
+
 }
+
+

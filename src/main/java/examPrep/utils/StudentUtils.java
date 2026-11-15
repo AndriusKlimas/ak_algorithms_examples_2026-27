@@ -645,6 +645,92 @@ public class StudentUtils {
         return shortest;
     }
 
+    //recap/learning
+    // read write
+    public static int moveFirstYearStudents(Student[] students){
+        int write = 0;
+
+        for (int read = 0; read < students.length; read++) {
+            if (students[read].getYear() == 1) {
+                students[write] = students[read];
+                write++;
+            }
+        }
+
+        // Clear the remaining positions
+        for (int i = write; i < students.length; i++) {
+            students[i] = null;
+        }
+
+        return write;
+
+    }
+
+    //read write
+    public static int keepStudentsInCourse(
+            Student[] students, String courseName){
+        int write = 0;
+
+        for (int read = 0; read < students.length; read++) {
+            if (students[read].getCourse().equals(courseName)){
+                students[write] = students[read];
+                write++;
+            }
+
+        }
+        for (int i = write; i < students.length; i++) {
+            students[i] = null;
+        }
+        return write;
+    }
+
+
+    //learning bubblesort
+    //sorts low to high
+    public static void bubbleSortByYear(Student[] students){
+
+        boolean swapped;
+        for (int i = 0; i < students.length; i++) {
+            swapped = false;
+            for (int j = 0; j < students.length -1 -i; j++) {
+                if (students[j].getYear() > students[j+1].getYear()){
+                    swap(students,j,j+1);
+                    swapped = true;
+                }
+
+            }
+            if (!swapped){
+                break;
+            }
+
+        }
+    }
+
+    private static void swap(Student [] data, int indexA, int indexB){
+        Student temp = data[indexA];
+        data[indexA] = data[indexB];
+        data[indexB] = temp;
+
+
+    }
+
+    //sorting in alphabetical order
+    public static void bubbleSortByName(Student[] students){
+        boolean swapped;
+        for (int i = 0; i < students.length; i++) {
+            swapped = false;
+            for (int j = 0; j < students.length -1 -i; j++) {
+                if (students[j].getName().compareTo(students[j+1].getName())>0){
+                    swap(students,j,j+1);
+                    swapped = true;
+                }
+            }
+            if (!swapped){
+                break;
+            }
+        }
+    }
+
 }
 
 

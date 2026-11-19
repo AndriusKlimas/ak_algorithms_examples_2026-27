@@ -9,13 +9,13 @@ import java.util.Comparator;
 
 public class StudentUtils {
 
-    private static void ArrayValidation(Student[] array){
+    private static void ArrayValidation(Student[] array) {
         if (array == null || array.length == 0) {
             throw new IllegalArgumentException("Array cannot be null or empty");
         }
     }
 
-    private static void studentValidation(Student[] array){
+    private static void studentValidation(Student[] array) {
         for (Student student : array) {
             if (student == null) {
                 throw new IllegalArgumentException("Student cannot be null");
@@ -23,7 +23,7 @@ public class StudentUtils {
         }
     }
 
-    public static int mostFrequentYear_BruteForce(Student[] students){
+    public static int mostFrequentYear_BruteForce(Student[] students) {
         ArrayValidation(students);
         studentValidation(students);
 
@@ -34,13 +34,13 @@ public class StudentUtils {
         for (int i = 1; i <= 5; i++) {
             int number = 0;
 
-            for (Student student : students){
+            for (Student student : students) {
                 if (student.getYear() == i) {
                     number++;
                 }
             }
 
-            if (number > highestNumber){
+            if (number > highestNumber) {
                 highestNumber = number;
                 answer = i;
             }
@@ -66,7 +66,7 @@ public class StudentUtils {
     }
 
 
-    public static int mostFrequentYear_TwoPointer(Student[] students){
+    public static int mostFrequentYear_TwoPointer(Student[] students) {
         ArrayValidation(students);
         studentValidation(students);
 
@@ -77,17 +77,17 @@ public class StudentUtils {
         int biggestCount = 0;
         int position = 0;
 
-        while(position < newArray.length){
+        while (position < newArray.length) {
             int year = newArray[position].getYear();
             int nextPosition = position;
             int count = 0;
 
-            while(nextPosition < newArray.length && newArray[nextPosition].getYear() == year){
+            while (nextPosition < newArray.length && newArray[nextPosition].getYear() == year) {
                 count++;
                 nextPosition++;
             }
 
-            if(count > biggestCount){
+            if (count > biggestCount) {
                 biggestCount = count;
                 answer = year;
             }
@@ -100,7 +100,7 @@ public class StudentUtils {
 
     }
 
-    public static Student searchByStudentNumber_BruteForce(Student[] students, String studentNum){
+    public static Student searchByStudentNumber_BruteForce(Student[] students, String studentNum) {
         ArrayValidation(students);
         if (studentNum == null || studentNum.isEmpty()) {
             throw new IllegalArgumentException("Student number cannot be null or empty");
@@ -115,7 +115,7 @@ public class StudentUtils {
         return null;
     }
 
-    public static Student searchByStudentNumber_TwoPointer(Student[] students, String studentNum){
+    public static Student searchByStudentNumber_TwoPointer(Student[] students, String studentNum) {
         Student[] sortedStudents = students.clone();
 
         Arrays.sort(
@@ -144,22 +144,21 @@ public class StudentUtils {
         return null;
     }
 
-    public static int countStudentsBruteForce(Student[] students, int year){
+    public static int countStudentsBruteForce(Student[] students, int year) {
         int count = 0;
         for (Student student : students) {
             if (student != null && student.getYear() == year) {
                 count++;
             }
         }
-        if (count>0){
+        if (count > 0) {
             return count;
-        }
-        else{
+        } else {
             return 0;
         }
     }
 
-    public static int countStudentsTwoPointer(Student[] students, int year){
+    public static int countStudentsTwoPointer(Student[] students, int year) {
         Student[] newArray = Arrays.copyOf(students, students.length);
 
         Arrays.sort(
@@ -188,7 +187,7 @@ public class StudentUtils {
     }
 
 
-    private static void StringValidation(String toCheck){
+    private static void StringValidation(String toCheck) {
         if (toCheck == null || toCheck.isBlank()) {
             throw new IllegalArgumentException(
                     "Course name cannot be null or blank"
@@ -197,7 +196,7 @@ public class StudentUtils {
     }
 
     public static int countByCourseBruteForce(
-            Student[] students, String courseName){
+            Student[] students, String courseName) {
         StringValidation(courseName);
         //initalise varaibles
         int count = 0;
@@ -212,7 +211,7 @@ public class StudentUtils {
         return count;
     }
 
-    public static int countByCourseTwoPointer(Student[] students, String courseName){
+    public static int countByCourseTwoPointer(Student[] students, String courseName) {
         // need to add validation for checking if course name != null or white space
 
         StringValidation(courseName);
@@ -220,7 +219,7 @@ public class StudentUtils {
         //copy the array
         //sort teh array
         Student[] newArray = Arrays.copyOf(students, students.length);
-        Arrays.sort(newArray,Comparator.comparing(Student::getCourse));
+        Arrays.sort(newArray, Comparator.comparing(Student::getCourse));
 
         //find the start position, so go through the entier list until you find it
 
@@ -246,10 +245,10 @@ public class StudentUtils {
     }
 
     public static Student searchByNameBruteForce(
-            Student[] students, String name){
+            Student[] students, String name) {
         Student found;
-        for (Student student : students){
-            if (student !=null && student.getName().equals(name)){
+        for (Student student : students) {
+            if (student != null && student.getName().equals(name)) {
                 found = student;
                 return found;
             }
@@ -260,10 +259,10 @@ public class StudentUtils {
     }
 
     public static Student searchByNameTwoPointer(
-            Student[] students, String name){
+            Student[] students, String name) {
 
         Student[] newArray = Arrays.copyOf(students, students.length);
-        Arrays.sort(newArray,Comparator.comparing(Student::getName));
+        Arrays.sort(newArray, Comparator.comparing(Student::getName));
 
 
         int left = 0;
@@ -288,18 +287,18 @@ public class StudentUtils {
     //Test prep
     //Converging pointer
     //easy
-    public static Student findStudent(Student[] students, String studentNumber){
+    public static Student findStudent(Student[] students, String studentNumber) {
         Student[] newArray = Arrays.copyOf(students, students.length);
-        Arrays.sort(newArray,Comparator.comparing(Student::getStudentNum));
+        Arrays.sort(newArray, Comparator.comparing(Student::getStudentNum));
 
         int left = 0;
-        int right = newArray.length-1;
+        int right = newArray.length - 1;
 
-        while(left<=right){
-            if (studentNumber.equals(newArray[left].getStudentNum())){
+        while (left <= right) {
+            if (studentNumber.equals(newArray[left].getStudentNum())) {
                 return newArray[left];
             }
-            if (studentNumber.equals(newArray[right].getStudentNum())){
+            if (studentNumber.equals(newArray[right].getStudentNum())) {
                 return newArray[right];
             }
             left++;
@@ -310,21 +309,20 @@ public class StudentUtils {
 
     //Inter
     public static boolean hasYearPairWithTotal(
-            Student[] students, int target){
+            Student[] students, int target) {
         Student[] newArray = Arrays.copyOf(students, students.length);
         Arrays.sort(newArray, Comparator.comparing(Student::getYear));
         int left = 0;
-        int right = newArray.length-1;
+        int right = newArray.length - 1;
 
-        while (left<right){
+        while (left < right) {
             int sum = newArray[left].getYear() + newArray[right].getYear();
-            if (sum == target){
+            if (sum == target) {
                 return true;
-            }else{
-                if (target<sum){
+            } else {
+                if (target < sum) {
                     left++;
-                }
-                else{
+                } else {
                     right--;
                 }
             }
@@ -349,15 +347,14 @@ public class StudentUtils {
         int maxSum = windowSum;
 
         for (int right = windowSize; right < students.length; right++) {
-            windowSum -= students[right-windowSize].getYear();
+            windowSum -= students[right - windowSize].getYear();
             windowSum += students[right].getYear();
 
-            if (windowSum> maxSum){
+            if (windowSum > maxSum) {
                 maxSum = windowSum;
             }
         }
         return maxSum;
-
 
 
         //sliding the window
@@ -384,7 +381,7 @@ public class StudentUtils {
 
 
     public static int highestCourseCount(
-            Student[] students, String courseName){
+            Student[] students, String courseName) {
         int windowSize = 3;
 
         if (students.length < windowSize) {
@@ -425,7 +422,7 @@ public class StudentUtils {
     //dynamic window
     //easy??????????? i dont think so
     public static int shortestCourseWindow(
-            Student[] students, String courseName){
+            Student[] students, String courseName) {
 
         int start = 0;
         int matches = 0;
@@ -461,7 +458,7 @@ public class StudentUtils {
     }
 
     //this is something else
-    public static int longestTwoCourseWindow(Student[] students){
+    public static int longestTwoCourseWindow(Student[] students) {
         int start = 0;
         int longest = 0;
 
@@ -513,7 +510,7 @@ public class StudentUtils {
     //two pointer
 
     public static int countYearsBetween(
-            Student[] students, int minimumYear, int maximumYear){
+            Student[] students, int minimumYear, int maximumYear) {
         Student[] newArray = Arrays.copyOf(students, students.length);
         Arrays.sort(newArray, Comparator.comparing(Student::getYear));
 
@@ -521,20 +518,19 @@ public class StudentUtils {
         int result = 0;
 
 
-
-        while (start< newArray.length && newArray[start].getYear() != minimumYear){
+        while (start < newArray.length && newArray[start].getYear() != minimumYear) {
             start++;
         }
 
 
         int end = start;
 
-        while(end< newArray.length && newArray[end].getYear() != maximumYear){
+        while (end < newArray.length && newArray[end].getYear() != maximumYear) {
             end++;
         }
 
-        if (result<(start - end) +1){
-            result = (start - end) +1;
+        if (result < (start - end) + 1) {
+            result = (start - end) + 1;
         }
 
         return result;
@@ -544,36 +540,36 @@ public class StudentUtils {
     //recap
     //converging pointer
     public static boolean hasYearTotal(
-            Student[] students, int target){
-        Student[] newArrray = Arrays.copyOf(students,students.length);
+            Student[] students, int target) {
+        Student[] newArrray = Arrays.copyOf(students, students.length);
         Arrays.sort(newArrray, Comparator.comparing(Student::getYear));
 
         int left = 0;
-        int right = newArrray.length -1;
+        int right = newArrray.length - 1;
         int total = 0;
 
-        while (left<right){
+        while (left < right) {
             //need to add them
             //check the result
             // if to high lower right
             // if to low increase left
 
             total = newArrray[left].getYear() + newArrray[right].getYear();
-            if (target>total){
+            if (target > total) {
                 left++;
-            } else if (target<total) {
+            } else if (target < total) {
                 right--;
-            } else if (total==target) {
+            } else if (total == target) {
                 return true;
 
             }
         }
-     return false;
+        return false;
     }
 
 
     //recap fixed window
-    public static int highestThreeYearTotal(Student[] students){
+    public static int highestThreeYearTotal(Student[] students) {
         int windowSize = 3;
         int windowSum = 0;
 
@@ -589,7 +585,7 @@ public class StudentUtils {
             windowSum -= students[leaving].getYear();
             windowSum += students[i].getYear();
 
-            if (windowSum>currentMax){
+            if (windowSum > currentMax) {
                 currentMax = windowSum;
             }
 
@@ -600,7 +596,7 @@ public class StudentUtils {
     //recap
     //dynamic window
     public static int shortestThreeCourseWindow(
-            Student[] students, String courseName){
+            Student[] students, String courseName) {
         //set up the variables
         //start end
         //while end > data length
@@ -647,7 +643,7 @@ public class StudentUtils {
 
     //recap/learning
     // read write
-    public static int moveFirstYearStudents(Student[] students){
+    public static int moveFirstYearStudents(Student[] students) {
         int write = 0;
 
         for (int read = 0; read < students.length; read++) {
@@ -668,11 +664,11 @@ public class StudentUtils {
 
     //read write
     public static int keepStudentsInCourse(
-            Student[] students, String courseName){
+            Student[] students, String courseName) {
         int write = 0;
 
         for (int read = 0; read < students.length; read++) {
-            if (students[read].getCourse().equals(courseName)){
+            if (students[read].getCourse().equals(courseName)) {
                 students[write] = students[read];
                 write++;
             }
@@ -687,26 +683,26 @@ public class StudentUtils {
 
     //learning bubblesort
     //sorts low to high
-    public static void bubbleSortByYear(Student[] students){
+    public static void bubbleSortByYear(Student[] students) {
 
         boolean swapped;
         for (int i = 0; i < students.length; i++) {
             swapped = false;
-            for (int j = 0; j < students.length -1 -i; j++) {
-                if (students[j].getYear() > students[j+1].getYear()){
-                    swap(students,j,j+1);
+            for (int j = 0; j < students.length - 1 - i; j++) {
+                if (students[j].getYear() > students[j + 1].getYear()) {
+                    swap(students, j, j + 1);
                     swapped = true;
                 }
 
             }
-            if (!swapped){
+            if (!swapped) {
                 break;
             }
 
         }
     }
 
-    private static void swap(Student [] data, int indexA, int indexB){
+    private static void swap(Student[] data, int indexA, int indexB) {
         Student temp = data[indexA];
         data[indexA] = data[indexB];
         data[indexB] = temp;
@@ -715,22 +711,546 @@ public class StudentUtils {
     }
 
     //sorting in alphabetical order
-    public static void bubbleSortByName(Student[] students){
+    public static void bubbleSortByName(Student[] students) {
         boolean swapped;
         for (int i = 0; i < students.length; i++) {
             swapped = false;
-            for (int j = 0; j < students.length -1 -i; j++) {
-                if (students[j].getName().compareTo(students[j+1].getName())>0){
-                    swap(students,j,j+1);
+            for (int j = 0; j < students.length - 1 - i; j++) {
+                if (students[j].getName().compareTo(students[j + 1].getName()) > 0) {
+                    swap(students, j, j + 1);
                     swapped = true;
                 }
             }
-            if (!swapped){
+            if (!swapped) {
                 break;
             }
         }
     }
 
+
+    //recap/learning
+    //selection sort
+
+    //sorts them from lowest to highest
+    public static void selectionSortByYear(Student[] students) {
+
+        for (int i = 0; i < students.length; i++) {
+            int minPos = i;
+            int min = students[minPos].getYear();
+
+            for (int j = i + 1; j < students.length; j++) {
+                if (students[j].getYear() < min) {
+                    min = students[j].getYear();
+                    minPos = j;
+                }
+
+            }
+            if (minPos != i) {
+                swap(students, i, minPos);
+            }
+        }
+
+
+//        for (int i = 0; i < data.length - 1; i++) {
+//            int minPos = i;
+//            int min = data[minPos];
+//
+//            for (int j = i+1; j < data.length; j++) {
+//                if(data[j] < min){
+//                    min = data[j];
+//                    minPos = j;
+//                }
+//            }
+//            if(minPos != i) {
+//                swap(data, i, minPos);
+//            }
+//        }
+    }
+
+
+    //sorts them alphabetically swap < -> > for reverse
+    public static void selectionSortByCourse(Student[] students) {
+        for (int i = 0; i < students.length; i++) {
+            int minPos = i;
+            String min = students[minPos].getCourse();
+
+            for (int j = i + 1; j < students.length; j++) {
+                if (students[j].getCourse().compareTo(min) < 0) {
+                    min = students[j].getCourse();
+                    minPos = j;
+                }
+
+            }
+            if (minPos != i) {
+                swap(students, i, minPos);
+            }
+
+        }
+    }
+
+    //learning binary search
+    //assuming it is in order already
+    public static Student searchByYear(
+            Student[] students, int year) {
+
+
+        int start = 0;
+        int end = students.length - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            int middleYear = students[mid].getYear();
+
+            if (middleYear == year) {
+                return students[mid];
+            } else if (middleYear > year) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+//        int start = 0;
+//        int end = data.length - 1;
+//
+//        while(start <= end){
+//            int mid = start + (end - start) / 2;
+//
+//            int comparison = data[mid].compareTo(target);
+//            if(comparison == 0){
+//                return mid;
+//            }else if(comparison > 0){
+//                end = mid-1;
+//            }else{
+//                start = mid+1;
+//            }
+//        }
+//
+//        return -1;
+
+        return null;
+    }
+
+    // binary search string
+    public static Student searchByStudentNumber(
+            Student[] students, String studentNumber) {
+        Arrays.sort(
+                students,
+                Comparator.comparing(Student::getStudentNum)
+        );
+
+        int start = 0;
+        int end = students.length - 1;
+
+        while (start <= end) {
+            int middle = start + (end - start) / 2;
+
+            int comparison = students[middle]
+                    .getStudentNum()
+                    .compareTo(studentNumber);
+
+            if (comparison == 0) {
+                return students[middle];
+            } else if (comparison > 0) {
+                end = middle - 1;
+            } else {
+                start = middle + 1;
+            }
+        }
+
+        return null;
+    }
+
+
+    //recap2
+    //twoPointer
+    public static int countStudentsBetweenYears(
+            Student[] students, int firstYear, int lastYear) {
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray, Comparator.comparing(Student::getYear));
+
+        //get start to the first opsition
+        int start = 0;
+
+        while (newArray[start].getYear() != firstYear) {
+            start++;
+        }
+
+        int end = start;
+
+        //incrament until you find the final year
+
+        while (newArray[end].getYear() != lastYear + 1) {
+            end++;
+        }
+
+        int result = start - end + 1;
+
+        return result;
+
+    }
+
+    //recap2
+    //converging pointer
+    public static boolean hasYearTotal2(Student[] students, int target) {
+
+        Student[] newArray = Arrays.copyOf(students, students.length);
+        Arrays.sort(newArray, Comparator.comparing(Student::getYear));
+
+        int left = 0;
+        int right = newArray.length - 1;
+
+        while (left < right) {
+            int sum = newArray[left].getYear() + newArray[right].getYear();
+
+            if (sum == target) {
+                return true;
+            } else if (sum > target) {
+                right--;
+
+            } else {
+                left++;
+            }
+
+        }
+        return false;
+    }
+
+    //recap3
+    //fixed sliding window
+    public static int highestCourseCount2(
+            Student[] students, String courseName) {
+        int windowSize = 4;
+        int amount = 0;
+        int maxCount = 0;
+
+        if (students.length < 4) {
+            return 0;
+        }
+
+        for (int i = 0; i < windowSize; i++) {
+            if (students[i].getCourse().equals(courseName)) {
+                amount++;
+            }
+        }
+        maxCount = amount;
+
+        for (int i = windowSize; i < students.length; i++) {
+            if (students[i - windowSize].getCourse().equals(courseName)) {
+                amount--;
+            }
+            if (students[i].getCourse().equals(courseName)) {
+                amount++;
+            }
+
+            if (amount > maxCount) {
+                maxCount = amount;
+            }
+
+        }
+
+        return maxCount;
+    }
+
+
+    //recap2
+    //dynamic Window
+    //Write this down!!!!
+    public static int longestYearWindow(
+            Student[] students, int year) {
+
+        int start = 0;
+        int end = 1;
+
+        int longestSubstring = 0;
+        int longestStartPos = 0;
+        int longestEndPos = 0;
+
+        while (end < students.length) {
+            for (int i = start; i < end; i++) {
+                if (students[end].getYear() == students[start].getYear()) {
+                    int currentLength = end - start;
+                    if (currentLength > longestSubstring) {
+                        longestStartPos = start;
+                        longestEndPos = end;
+                        longestSubstring = currentLength;
+                    }
+                    start = i + 1;
+
+                    break;
+                }
+            }
+            end++;
+        }
+        if (start == 0) {
+            return students;
+        }
+        return text.substring(longestStartPos, longestEndPos);
+
+    }
+
+    //recap2
+    //sliding window2
+    public static int longestYearWindow2(
+            Student[] students, int year) {
+
+        int start = 0;
+        int end = 0;
+        int count = 0;
+        int longest = 0;
+
+        while (end < students.length) {
+            if (students[end].getYear() == year) {
+                count++;
+            }
+
+            while (count > 2) {
+                if (students[start].getYear() == year) {
+                    count--;
+                }
+                start++;
+            }
+
+            int windowSize = end - start + 1;
+
+            if (windowSize > longest) {
+                longest = windowSize;
+            }
+
+            end++;
+        }
+
+        return longest;
+    }
+
+
+    //recap2
+    //read write
+    public static int keepStudentsFromYear(
+            Student[] students, int year) {
+
+        int read = 0;
+        int write = 0;
+        int count = 0;
+
+
+        while (read < students.length) {
+            if (students[read].getYear() == year) {
+                students[write] = students[read];
+                write++;
+                count++;
+            }
+
+            read++;
+
+        }
+        for (int i = write; i < students.length; i++) {
+            students[i] = null;
+
+        }
+        return count;
+    }
+
+    //recap
+    // bubblesort
+    // > for accending(a-z) < for decending(z-a)
+    public static void bubbleSortByStudentNumber(
+            Student[] students) {
+
+        boolean swapped;
+        for (int i = 0; i < students.length; i++) {
+            swapped = false;
+            for (int j = 0; j < students.length - 1 - i; j++) {
+                if (students[j].getStudentNum().compareTo(students[j + 1].getStudentNum()) > 0) {
+                    swap2(students, j, j + 1);
+                    swapped = true;
+                }
+
+            }
+            if (!swapped) {
+                break;
+            }
+
+        }
+    }
+
+    private static void swap2(Student[] data, int indexA, int indexB) {
+        Student temp = data[indexA];
+        data[indexA] = data[indexB];
+        data[indexB] = temp;
+    }
+
+    //recap
+    //selection sort
+    public static void selectionSortByName(
+            Student[] students) {
+
+        for (int i = 0; i < students.length-1; i++) {
+            int smallestPosition = i;
+
+            for (int j = i + 1; j < students.length; j++){
+                if (students[j].getName().compareTo(students[smallestPosition].getName())<0){
+                    smallestPosition = j;
+                }
+            }
+            if (smallestPosition!=i){
+                swap2(students,i,smallestPosition);
+            }
+        }
+
+    }
+
+
+    //recap2
+    //binary search
+    public static Student searchByCourse(
+            Student[] students, String courseName){
+        Student[] newArray = Arrays.copyOf(students,students.length);
+        Arrays.sort(newArray, Comparator.comparing(Student::getCourse));
+
+        int start = 0;
+        int end = students.length - 1;
+
+        while (start <= end) {
+            int middle = start + (end - start) / 2;
+
+            int comparison = students[middle]
+                    .getStudentNum()
+                    .compareTo(courseName);
+
+            if (comparison == 0) {
+                return students[middle];
+            } else if (comparison > 0) {
+                end = middle - 1;
+            } else {
+                start = middle + 1;
+            }
+        }
+
+        return null;
+
+    }
+
+    private static void validateStudents(Student[] students) {
+        if (students == null || students.length == 0) {
+            throw new IllegalArgumentException(
+                    "Students array cannot be null or empty"
+            );
+        }
+    }
+
+    private static void validateNumber(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException(
+                    "Number cannot be less than 0"
+            );
+        }
+    }
+
+    private static void validateNumber(String number) {
+        if (number == null || number.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Number cannot be null or blank"
+            );
+        }
+    }
+
+    private static void validateString(String text) {
+        if (text == null || text.isBlank()) {
+            throw new IllegalArgumentException(
+                    "String cannot be null, empty, or whitespace"
+            );
+        }
+    }
+
+    //recap3
+    public static int countStudentsInYearRange(
+            Student[] students, int minimumYear, int maximumYear){
+        Student[] sorted = Arrays.copyOf(students, students.length);
+
+        Arrays.sort(
+                sorted,
+                Comparator.comparingInt(Student::getYear)
+        );
+
+        int start = 0;
+
+        // Find the first year inside the range
+        while (start < sorted.length &&
+                sorted[start].getYear() < minimumYear) {
+            start++;
+        }
+
+        int end = start;
+
+        // Find the first year after the range
+        while (end < sorted.length &&
+                sorted[end].getYear() <= maximumYear) {
+            end++;
+        }
+
+        return end - start;
+    }
+
+    //recap3
+    public static boolean hasYearPairWithDifference(
+            Student[] students, int target){
+        Student[] sorted = Arrays.copyOf(students, students.length);
+
+        Arrays.sort(
+                sorted,
+                Comparator.comparingInt(Student::getYear)
+        );
+
+        int left = 0;
+        int right = sorted.length - 1;
+
+        while (left < right) {
+            int total = sorted[left].getYear()
+                    + sorted[right].getYear();
+
+            if (total == target) {
+                return true;
+            } else if (total < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return false;
+    }
+
+    //recap3
+    public static int lowestYearTotal(
+            Student[] students, int windowSize){
+
+
+
+        int currentTotal = 0;
+        int smallestTotal = Integer.MAX_VALUE;
+
+        if (students.length <=windowSize){
+            return 0;
+        }
+
+        for (int i = 0; i < windowSize; i++) {
+            currentTotal += students[i].getYear();
+        }
+
+        smallestTotal = currentTotal;
+
+        for (int i = windowSize; i < students.length; i++) {
+            int leaving = students[i-windowSize].getYear();
+            currentTotal -= leaving;
+            currentTotal += students[i].getYear();
+
+            if (currentTotal<smallestTotal){
+                smallestTotal = currentTotal;
+            }
+
+        }
+        return smallestTotal;
+    }
 }
 
 
